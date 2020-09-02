@@ -23,6 +23,7 @@
 
 **Terminology Differences**
 Data scientists: _features_ are used to predict a _target_
+
 Statisticians: _predictor variables_ are used to predict _response_ or _dependent variable_
 
 _Sample_: Computer scientists use _sample_ to mean a single row, stats people use it for a collection of rows
@@ -58,6 +59,8 @@ _"statisticians estimate, data scientists measure"_
 
 ### Mean
 ![Mean](img/mean.png)
+
+NEXT: Trimmed Mean
 
 ### Median and Robust Estimates
 ### Outliers
