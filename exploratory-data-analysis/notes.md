@@ -57,7 +57,7 @@ Outlier - a data value that is very different from most of the data
 _"statisticians estimate, data scientists measure"_
 
 ### Mean
-![Mean](./img/image.png)
+![Mean](exploratory-data-analysis/img/image.png)
 
 ### Median and Robust Estimates
 ### Outliers
