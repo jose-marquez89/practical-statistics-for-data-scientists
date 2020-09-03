@@ -290,10 +290,42 @@ and python
 ax = (state['Population'] / 1_000_000).plot.hist(figsize=(4, 4))
 ax.set_xlabel('Population (millions)')
 ```
- 
+
+**Statistical Moments**
+Location and variability are the first and second _moments_ of a distribution. Third and fourth moments are _skewness_ and _kurtosis_. Kurtosis is the propensity of the data to have
+extreme values. Skewness: skewed to larger or smaller values
 
 ### Density Plots and Estimates
+- shows the distribution of data as a continuous line
 
+In R
+```R
+hist(state[['Murder.Rate']], freq=FALSE)
+lines(density(state[['Murder.Rate']]), lwd=3, col='blue')
+```
+
+and python
+```python
+ax = state['Murder.Rate'].plot.hist(density=True, xlim=[0,12], bins=range(1,12))
+state['Murder.Rate'].plot.density(ax=ax) 1
+ax.set_xlabel('Murder Rate (per 100,000)')
+```
+Note: `ax` adds to the same graph
+
+Density plot displays the histogram as a proportion rather than
+frequencies (y-axis). Total area under the density curve == 1. Insead of counts in bins, calculate area under curve between any two points on x-axis
+
+**Density estimation**
+For most data science problems you won't need to use the many
+available function for density estimation, the base functions
+will usually suffice, just know that there are many
+
+**KEY IDEAS from book**
+- A frequency table is a tabular version of the frequency counts found in a histogram
+- A boxplot—with the top and bottom of the box at the 75th and 25th percentiles, respectively—also gives a quick sense of the distribution of the data; it is often used in side-by-side displays to compare distributions
+- A density plot is a smoothed version of a histogram; it requires a function to estimate a plot based on the data (multiple estimates are possible, of course).
+
+NEXT: Exploring Binary and categorical data
 ## Exploring Binary and Categorical Data
 
 ### Mode
