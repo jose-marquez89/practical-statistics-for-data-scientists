@@ -31,7 +31,7 @@ _Sample_: Computer scientists use _sample_ to mean a single row, stats people us
 ### Nonrectangular Data Structures
 Examples of non-rectangular data structures:
 - time series data
-- spatial data 
+- spatial data
 - graph (network) data structures
   - used to represent physical, social and abstract relationships
   - example: a social network, distribution hubs
@@ -51,7 +51,7 @@ Weighted Mean - the sum of all values times a weight divided by the sum of the w
 Median - the 50th percentile
 Percentile - The value such the _P_ percent of the data lies below AKA quantile
 Weighted median - the value such that one-half of the sum of the weights lies above and below the sorted data
-Trimmed mean - the average of all values after dropping a fixed number of extreme values 
+Trimmed mean - the average of all values after dropping a fixed number of extreme values
 Robust - not sensitive to extreme values
 Outlier - a data value that is very different from most of the data
 
@@ -60,11 +60,60 @@ _"statisticians estimate, data scientists measure"_
 ### Mean
 ![Mean](img/mean.png)
 
-NEXT: Trimmed Mean
+Trimmed mean cuts off _p_ values from both sides of all values, sorted. Helps to
+control extreme values
+![Trimmed Mean](img/trimmedMean.png)
+
+Weighted mean is the sum of weights times values divided by sum of weights. This
+helps when particular variables are over or underrepresented.
+![Weighted Mean](img/weightedMean.png)
 
 ### Median and Robust Estimates
+- The median is less sensitve to the data than the mean.
+- When there are an even number of data values, the median is the average of
+  the two values that divide the data set into upper and lower halves.
+
+Why use the median?
+- remember "Bill Gates walks into a bar, the average person is now a millionaire"
+- this type of thing doesn't affect the median
+
+Note: _You can also compute a weighted median_ (look this up)
 ### Outliers
+- always make an effort to investigate outliers
+- sometimes an outlier will be the result of erroneous data
+- the mean is more sensitive to erroneous data, whereas the median is not
+  affected nearly as much
+
+**Anomaly Detection**
+In anomaly detection, outliers _are_ the points of interest, the rest of the data
+just informs what is normal
+
+The **trimmed mean** is a nice compromise to consider when outliers are present.
+it's robust enough to escape major influence from outliers, but also uses
+more of the data
+
+There are other **more robust metrics** that can be efficient but if the data
+is large enough, it may not make that much of a difference
+
 ### Example: Location Estimates of Population and Murder Rates
+**Computing mean in R**
+```R
+> state <- read.csv('state.csv')
+> mean(state[['Population']])
+[1] 6162876
+> mean(state[['Population']], trim=0.1)
+[1] 4783697
+> median(state[['Population']])
+[1] 4436370
+```
+
+**Pandas**
+```python
+state = pd.read_csv('state.csv')
+state['Population'].mean()
+trim_mean(state['Population'], 0.1)
+state['Population'].median()
+```
 
 ## Estimates of Variability
 
@@ -96,9 +145,3 @@ NEXT: Trimmed Mean
 ### Visualizing Mutiple Variables
 
 ## Summary
-
-
-
-
-
-
