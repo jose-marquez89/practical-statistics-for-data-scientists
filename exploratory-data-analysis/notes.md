@@ -115,9 +115,48 @@ trim_mean(state['Population'], 0.1)
 state['Population'].median()
 ```
 
+**Weighted mean in R**
+This uses the `matrixStats` package
+```R
+> weighted.mean(state[['Murder.Rate']], w=state[['Population']])
+[1] 4.445834
+> library('matrixStats')
+> weightedMedian(state[['Murder.Rate']], w=state[['Population']])
+[1] 4.4
+```
+
+**Weighted mean with pandas and numpy**
+```python
+np.average(state['Murder.Rate'], weights=state['Population'])
+wquantiles.median(state['Murder.Rate'], weights=state['Population'])
+```
+**KEY IDEAS**
+- the basic metric for location is the mean but it can be sensitive to outliers
+- other metrics like trimmed mean and median are more robust
+
 ## Estimates of Variability
+- **variability** is at the heart of statistics
+- **dispersion** is how tightly clustered or spread apart the data is
+
+**KEY TERMS**
+Deviations - the difference between the observed values and the estimate of
+location
+Variance - The sum of squared deviations from the mean divided by n – 1 where n is the number of data values (AKA mean squared error)
+Standard deviation - the square root of the variance
+Mean absolute deviation - The mean of the absolute values of the deviations from the mean (AKA l1 norm, Manhattan norm)
+Range - the difference between the largest and smallest value in the datset
+Order statistics - metrics based on the sorted data values (AKA ranks)
+Percentile - The value such that P percent of the values take on this value or less and (100–P) percent take on this value or more (AKA quantile)
+Interquantile range - The difference between the 75th percentile and the 25th percentile (AKA IQR)
 
 ### Standard Deviation and Related Estimates
+- a deviation is a difference between the estimate of location and the observed
+data
+- the deviations tell us how dispersed the data is around the central value
+
+**Mean absolute deviation**
+this is the average of the absolute values of the deviations
+mad = ![mad](img/meanAbsDev.png)
 ### Estimates based on Percentiles
 ### Example: Variability Estimates of State Population
 
