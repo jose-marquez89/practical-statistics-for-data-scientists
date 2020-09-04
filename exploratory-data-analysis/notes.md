@@ -325,8 +325,29 @@ will usually suffice, just know that there are many
 - A boxplot—with the top and bottom of the box at the 75th and 25th percentiles, respectively—also gives a quick sense of the distribution of the data; it is often used in side-by-side displays to compare distributions
 - A density plot is a smoothed version of a histogram; it requires a function to estimate a plot based on the data (multiple estimates are possible, of course).
 
-NEXT: Exploring Binary and categorical data
 ## Exploring Binary and Categorical Data
+
+**Key Terms**
+- Mode - the most commonly occurring category or value in a data set
+- Expected Value - When the categories can be associated with a numeric value, this gives an average value 
+based on a category's probability of occurrence
+
+**Bar Charts**
+```R
+barplot(as.matrix(dfw) / 6, cex.axis=0.8, cex.names=0.7,
+        xlab='Cause of delay', ylab='Count')
+```
+
+in python
+```python
+ax = dfw.transpose().plot.bar(figsize=(4, 4), legend=False)
+ax.set_xlabel('Cause of delay')
+ax.set_ylabel('Count')
+```
+
+Bar chart: x-axis usually represents different categories of a factor variable
+
+NEXT: Box(Numerical Data as categorical data)
 
 ### Mode
 ### Expected Value
