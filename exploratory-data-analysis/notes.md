@@ -347,11 +347,42 @@ ax.set_ylabel('Count')
 
 Bar chart: x-axis usually represents different categories of a factor variable
 
-NEXT: Box(Numerical Data as categorical data)
+**Numerical Data as categorical data**
+- converting numerical data to categorical data is widely used in analysis
+- can help you discover relpationships between features
 
 ### Mode
+The value that appears most often; generally not used for numeric data
 ### Expected Value
+Expected value is a form a weighted mean where the weights are probabilities
+
+Calculation:
+1. Multiply each outcome by its probablility of occurrence
+2. Sum the values
+
+Cloud Service example:
+- 2 services, $50/month and $300/month
+- projected 5% will sign up for 300, 15% for 50, 80% no sign up
+
+EV = (0.05)(300) + (0.15)(50) + (0.80)(0) = 22.5
+
+The expected value of each attendee is $22.50
+
+- often based on a subjective judgement
+- examples: EV of 5yrs of profits from a new acquisition, expected cost savings form new patient management software
+
 ### Probability
+- odds can be converted to probabilities (they aren't exactly the same thing)
+- if odds are 2 to 1, prb = 2/(2+1) = 2/3
+- in practical terms probability of an event is the proportion of times it will occur 
+if the situation could be repeated over and over (frequentist)
+- usually an imaginary construction
+
+**KEY IDEAS**
+- categorical data is typically summed up in proportions and can be visualized in a bar chart
+- categories can be numeric data that has been binned
+- expected value is the sum of values times their probability of occurrence, often used to sum up factor variables
+
 
 ## Correlation
 
