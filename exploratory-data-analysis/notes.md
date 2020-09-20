@@ -385,14 +385,221 @@ if the situation could be repeated over and over (frequentist)
 
 
 ## Correlation
+When high values of X go with low values of Y, the variables are negatively correlated
+
+**Key Terms**
+- Correlation coefficient: measures the extent to which numeric variables are associated with one another (ranges from -1 to +1)
+- Correlation matrix: A table where variables are shown on both rows and columns. The cells are the correlation between the variables
+
+The **correlation coefficient** is a more standardized variant of the vector sum of products. Gives an estimate of the correlation that 
+always lies on the same scale.
+
+**Pearson's Correlation Coefficient**
+![pearsons](img/pearsonsCorr.png)
+
+CC may not be a useful metric if variables have an association that isn't linear
+
+**Correlation Plots**
+In R using `corrplot`
+```R
+etfs <- sp500_px[row.names(sp500_px) > '2012-07-01',
+                 sp500_sym[sp500_sym$sector == 'etf', 'symbol']]
+library(corrplot)
+corrplot(cor(etfs), method='ellipse')
+```
+
+in python using `seaborn.heatmap`:
+```python
+etfs = sp500_px.loc[sp500_px.index > '2012-07-01',
+                    sp500_sym[sp500_sym['sector'] == 'etf']['symbol']]
+sns.heatmap(etfs.corr(), vmin=-1, vmax=1,
+            cmap=sns.diverging_palette(20, 220, as_cmap=True))
+```
+
+- CC is sensitive to outliers
+- use R package `robust` with function `covRob` for robust CC computation
+- in python, `sklearn.covariance` provides this functionality as well
+- There are CC's other than Pearson's, but data scientists can usually stick to this and robust alternatives
 
 ### Scatterplots
+In R:
+```R
+plot(telecom$T, telecom$VZ, xlab='ATT (T)', ylab='Verizon (VZ)')
+```
+
+Python:
+```python
+ax = telecom.plot.scatter(x='T', y='VZ', figsize=(4, 4), marker='$\u25EF$')
+ax.set_xlabel('ATT (T)')
+ax.set_ylabel('Verizon (VZ)')
+ax.axhline(0, color='grey', lw=1)
+ax.axvline(0, color='grey', lw=1)
+```
+
+**KEY IDEAS**
+- The correlation coefficient measures the extent to which two paired variables (e.g., height and weight for individuals) are associated with one another.
+- When high values of v1 go with low values of v2, v1 and v2 are negatively associated.
+- the correlation coefficient is a standardized metric, always ranges between -1 and +1
+- a CC of zero indicates no correlation, but be aware that there can be positive and negative correlations even in random arrangements of data
 
 ## Exploring Two or More Variables
+- methods that explore two variables are called _bivariate analyis_
+- _multivariate analysis_ involves multiple variables
+
+**Key Terms**
+- Contingency Table: a tally of counts between two or more categorical variables
+- Hexagonal Binning: a plot of two numeric variables with the records binned into hexagons
+- Contour Plot: a plot showing the density of two numeric variables like a topographical map
+- Violin Plot: similar to a boxplot but showing the density estimate 
 
 ### Hexagonal Binning and Countours (Plotting Numeric Versus Numeric Data)
+- for a dataset with hundreds of thousands to millions of rows, a scatterplot will be too dense
+- the book illustrates with the `kc_tax` data set
+
+**Stripping out extremes**
+In R:
+```R
+kc_tax0 <- subset(kc_tax, TaxAssessedValue < 750000 &
+                  SqFtTotLiving > 100 &
+                  SqFtTotLiving < 3500)
+nrow(kc_tax0)
+432693
+```
+
+Python:
+```python
+kc_tax0 = kc_tax.loc[(kc_tax.TaxAssessedValue < 750000) &
+                     (kc_tax.SqFtTotLiving > 100) &
+                     (kc_tax.SqFtTotLiving < 3500), :]
+kc_tax0.shape
+(432693, 3)
+```
+
+NOTE: Hadley Wickham developed `ggplot2`
+
+**Hexagonal Bin Plot**
+In R:
+```R
+ggplot(kc_tax0, (aes(x=SqFtTotLiving, y=TaxAssessedValue))) +
+  stat_binhex(color='white') +
+  theme_bw() +
+  scale_fill_gradient(low='white', high='black') +
+  labs(x='Finished Square Feet', y='Tax-Assessed Value')
+```
+
+Python:
+```python
+ax = kc_tax0.plot.hexbin(x='SqFtTotLiving', y='TaxAssessedValue',
+                         gridsize=30, sharex=False, figsize=(5, 4))
+ax.set_xlabel('Finished Square Feet')
+ax.set_ylabel('Tax-Assessed Value')
+```
+
+**Contour Plot**
+In R using `geom_density2d`:
+```R
+ggplot(kc_tax0, aes(SqFtTotLiving, TaxAssessedValue)) +
+  theme_bw() +
+  geom_point(alpha=0.1) +
+  geom_density2d(color='white') +
+  labs(x='Finished Square Feet', y='Tax-Assessed Value')
+```
+
+Python using `seaborn`:
+```python
+ax = sns.kdeplot(kc_tax0.SqFtTotLiving, kc_tax0.TaxAssessedValue, ax=ax)
+ax.set_xlabel('Finished Square Feet')
+ax.set_ylabel('Tax-Assessed Value')
+```
+
+
 ### Two Categorical Variables
+A _contingency table_ is a way to summarize counts by category
+
+In R:
+```R
+library(descr)
+x_tab <- CrossTable(lc_loans$grade, lc_loans$status,
+                    prop.c=FALSE, prop.chisq=FALSE, prop.t=FALSE)
+```
+
+Python:
+```python
+crosstab = lc_loans.pivot_table(index='grade', columns='status',
+                                aggfunc=lambda x: len(x), margins=True) # margins keywords adds column and row sums
+
+df = crosstab.loc['A':'G',:].copy() # copy the pivot table and ignore sums
+df.loc[:,'Charged Off':'Late'] = df.loc[:,'Charged Off':'Late'].div(df['All'],
+                                                                    axis=0) # divide rows with the row sum
+df['All'] = df['All'] / sum(df['All']) # divide the 'All' column by sum
+perc_crosstab = df
+```
+
 ### Categorical and Numeric Data
+A box plot can be used to compare the distributions of numeric variables grouped by categorical variables 
+
+In R:
+```R
+boxplot(pct_carrier_delay ~ airline, data=airline_stats, ylim=c(0, 50))
+```
+
+Python: 
+```python
+ax = airline_stats.boxplot(by='airline', column='pct_carrier_delay')
+ax.set_xlabel('')
+ax.set_ylabel('Daily % of Delayed Flights')
+plt.suptitle('')
+```
+
+**Violin Plots**
+Violin plots show the density estimate on the y axis, although this shows more nuance in the distribution
+than a boxplot, the latter displays outliers clearly
+
+In R using `geom_violin`:
+```R
+ggplot(data=airline_stats, aes(airline, pct_carrier_delay)) +
+  ylim(0, 50) +
+  geom_violin() +
+  labs(x='', y='Daily % of Delayed Flights')
+```
+
+Python using `seaborn` and the `violinplot` method:
+```python
+ax = sns.violinplot(airline_stats.airline, airline_stats.pct_carrier_delay,
+                    inner='quartile', color='white')
+ax.set_xlabel('')
+ax.set_ylabel('Daily % of Delayed Flights')
+```
+
 ### Visualizing Mutiple Variables
+Charts for bivariate analysis can be extended to multivariate analysis via the use of _conditions_
+
+In R using `ggplot2` and the idea of _facets_:
+```R
+ggplot(subset(kc_tax0, ZipCode %in% c(98188, 98105, 98108, 98126)),
+         aes(x=SqFtTotLiving, y=TaxAssessedValue)) +
+  stat_binhex(color='white') +
+  theme_bw() +
+  scale_fill_gradient(low='white', high='blue') +
+  labs(x='Finished Square Feet', y='Tax-Assessed Value') +
+  facet_wrap('ZipCode') 
+```
+
+In Python using `seaborn`:
+```python
+zip_codes = [98188, 98105, 98108, 98126]
+kc_tax_zip = kc_tax0.loc[kc_tax0.ZipCode.isin(zip_codes),:]
+kc_tax_zip
+
+def hexbin(x, y, color, **kwargs):
+    cmap = sns.light_palette(color, as_cmap=True)
+    plt.hexbin(x, y, gridsize=25, cmap=cmap, **kwargs)
+
+g = sns.FacetGrid(kc_tax_zip, col='ZipCode', col_wrap=2) 1
+g.map(hexbin, 'SqFtTotLiving', 'TaxAssessedValue',
+      extent=[0, 3500, 0, 700000]) 2
+g.set_axis_labels('Finished Square Feet', 'Tax-Assessed Value')
+g.set_titles('Zip code {col_name:.0f}')
+```
 
 ## Summary
