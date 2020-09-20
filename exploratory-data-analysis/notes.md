@@ -602,4 +602,13 @@ g.set_axis_labels('Finished Square Feet', 'Tax-Assessed Value')
 g.set_titles('Zip code {col_name:.0f}')
 ```
 
+**KEY IDEAS**
+- Hexagonal binning and contour plots are useful tools that permit graphical examination of two
+numeric variables at a time
+- Contingency tables are the standard tool for looking at the counts of two categorical variables
+- Boxplots and violin plots allow you to plot a numeric variable against a categorical variable
+
 ## Summary
+- The key idea of EDA is to _look at the data_ in order to 
+gain intuition for the project
+- EDA should be the cornerstone of any DS project
