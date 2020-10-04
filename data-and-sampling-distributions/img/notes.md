@@ -31,6 +31,29 @@ stratifying the population.
 
 **Sample Bias** - a sample that misrepresents the population
 
+ _Random Sampling_ a process in which every member of the population being
+ sample has an equal opportunity of being chosen for the sample at each draw
+
+ The sample that results is called a simple random sample.
+ - _with replacement_: observations are put back into population so they are
+ available for re-selection
+ - _without replacement_ observations are no longer available after being
+ chosen for sample
+
+It seems that in making an estimate or a model based on sample, having data
+that's representative and clean is more important than quantity
+
+When collecting data, and also when choosing pre-collected data, you need to
+guard against sample bias, in which your sample is different in some meaningful
+non-random way than the population it what mean to represent.
+
+Samples are rarely perfect representations of the population, but if there's
+some non-random bias in the way the data is being collected, you can expect
+other sample to reflect the same difference when collected the same way.
+
+_Self Selection Bias_: This refers to the way yelp reviews can often be written
+largely by people driven to write a review because they've had a bad experience.
+Sometimes self selection samples can be reliable in comparing similar establishments
 
 
 ### Bias
