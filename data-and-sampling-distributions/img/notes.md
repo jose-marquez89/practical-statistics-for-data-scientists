@@ -39,7 +39,7 @@ stratifying the population.
 
 ### Size versus Quality: When Does Size Matter?
 
-# Sample Mean versus Population Mean
+## Sample Mean versus Population Mean
 
 ## Selection Bias
 
