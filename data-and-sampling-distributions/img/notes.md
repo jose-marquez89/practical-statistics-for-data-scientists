@@ -57,11 +57,20 @@ Sometimes self selection samples can be reliable in comparing similar establishm
 
 
 ### Bias
+_Bias_ refers to measurement or sampling errors that are systematic and produced
+by the measurement or sampling process
 
 ### Random Selection
+_Random sampling_ is a method of achieving "representativeness" in a sample.
+Truly random sampling may not always be easy.
+
+In _stratified sampling_, the population is divided into strata and random
+samples are taken from each strata. **Example**: In a political poll, divide
+certain racial groups into strata but overweight groups that might
+be underrepresented.
 
 ### Size versus Quality: When Does Size Matter?
-
+NEXT: Size vs quality
 ## Sample Mean versus Population Mean
 
 ## Selection Bias
