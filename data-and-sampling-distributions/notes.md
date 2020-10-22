@@ -80,7 +80,8 @@ you can achieve very specific search results.
 
 ## Sample Mean versus Population Mean
 
-$\bar{x}$ - Mean of a Population
+ - ![Sample Mean](img/xbar.png) -> Mean of a Sample
+ - ![Population Mean](img/popMean.png) -> Mean of Population 
 
 ## Selection Bias
 
