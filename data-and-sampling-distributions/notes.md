@@ -32,7 +32,7 @@ stratifying the population.
 **Sample Bias** - a sample that misrepresents the population
 
  _Random Sampling_ a process in which every member of the population being
- sample has an equal opportunity of being chosen for the sample at each draw
+ sampled has an equal opportunity of being chosen for the sample at each draw
 
  The sample that results is called a simple random sample.
  - _with replacement_: observations are put back into population so they are
@@ -71,7 +71,16 @@ be underrepresented.
 
 ### Size versus Quality: When Does Size Matter?
 NEXT: Size vs quality
+
+Sometimes smaller can be better, it's often more feasible to track down missing
+values or evaluate outliers in large datasets. Consider google searches; This
+example of big data is sparse. The vector representation of a search for
+"Data Science" is mostly zeros. When you accumulate lots of this kind of data,
+you can achieve very specific search results.
+
 ## Sample Mean versus Population Mean
+
+$\bar{x}$ - Mean of a Population
 
 ## Selection Bias
 
