@@ -70,22 +70,50 @@ certain racial groups into strata but overweight groups that might
 be underrepresented.
 
 ### Size versus Quality: When Does Size Matter?
-NEXT: Size vs quality
-
 Sometimes smaller can be better, it's often more feasible to track down missing
 values or evaluate outliers in large datasets. Consider google searches; This
 example of big data is sparse. The vector representation of a search for
 "Data Science" is mostly zeros. When you accumulate lots of this kind of data,
 you can achieve very specific search results.
 
-## Sample Mean versus Population Mean
+### Sample Mean versus Population Mean
 
  - ![Sample Mean](img/xbar.png) -> Mean of a Sample
- - ![Population Mean](img/popMean.png) -> Mean of Population 
+ - ![Population Mean](img/popMean.png) -> Mean of Population
+
+ We keep these separate because a sample mean is observed but a population mean is often inferred from sample.
+
+**Key Ideas**
+- Even with big data, random sampling is still important for data scientists
+- Bias happes when observations are systematically erroneous because they don't
+represent the entire population
+- When it comes to data, quality is often more important than quantity and data
+scientists can realistically improve on quality and bias in a way that would be
+more expensive (in many ways) with a larger data set
 
 ## Selection Bias
+Selection bias happens when you selectively choose data, whether you know it or
+not, in a way that leads to a misleading conclusion.
+
+**Key Terms**
+- **Selection bias**: Bias resulting from how you select observations
+- **Data snooping**: Digging through data in search of something interesting
+- **Vast search effect**: Bias or nonreproducibility resulting form repeated data
+modeling, or modeling data with large numbers of predictor variables.
+
+"If you torture the data long enough, sooner or later it will confess." This can
+be a product of _data snooping_. There is a difference between things that are
+verified via the testing of a hypothesis through an experiment vs a phenomenon
+that gets discovered by snooping through the data.
+
+This is inevitably going to be something you run into as a data scientist because
+you're looking at large data sets. If you repeatedly run different models and
+ask different questions with a large dataset, you're going to find something interesting.
+
+Always ask yourself: "Is it really some"
 
 ### Regression to the Mean
+
 
 ## Sampling Distribution of a Statistic
 
