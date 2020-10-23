@@ -228,6 +228,32 @@ formulas for inference.
 - you can always bootstrap
 
 ### Standard Error
+- summarizes the variability in the sampling distribution for a statistic
+- based on the standard deviation and the sample size
+- SE is inversely proportional to the sample size
+- the relationship between SE and SS in known as _square-root of n_ rule; if you
+want to reduce the SE by 2, you need to increase the SS by 4
+- don't confuse standard deviation with standard error, the former measures variability
+of individual data points, the latter measures variability of a sample metric
+
+How you might measure SE _Note: This is kind of wasteful_:
+1. collect new samples from population
+2. for each new sample, calculate a statistic (like the mean)
+3. get the standard deviation of what you calculated in step 2, this is basically
+your estimate of standard error
+
+Remember that you can always use bootstrap resamples, it's the modern way to
+estimate the standard error.
+
+![Standard Error](img/stdErr.png)
+
+**Key Ideas**
+- frequency distribution of a sample statistic tells you how the metric might
+vary from sample to sample
+- you can get a sampling distribution from a bootstrap or from methods that rely
+on the central limit theorem
+- standard error summarizes the variability of a sample statistic
+
 
 ## The Bootstrap
 
