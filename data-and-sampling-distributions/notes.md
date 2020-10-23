@@ -110,12 +110,37 @@ This is inevitably going to be something you run into as a data scientist becaus
 you're looking at large data sets. If you repeatedly run different models and
 ask different questions with a large dataset, you're going to find something interesting.
 
-Always ask yourself: "Is it really some"
+Always ask yourself: "Is it really something interesting or is it an outlier?"
+
+You can use these techniques to bolster the confidence of your findings:
+- holdout sets (sometimes more than one)
+- target shuffling (basically a permutation test)
+
+Things to guard against:
+- nonrandom sampling
+- cherry-picking data
+- selection of time intervals that accentuate a specific effect
+- stopping an experiment when you've achieved interesting results
 
 ### Regression to the Mean
+This is the "rookie of the year, sophomore slump" phenomenon, basically. The
+rookie does well because of luck and skill, but not quite as well the next
+year when the luck isn't there. The previous year's outstanding performance was
+an outlier; the following year's performance _regresses to the mean_.
 
+- first identified by Francis Galton in 1886
+- the children of extremely tall men tend not to be as tall as their father
+- **Warning**: don't confuse this with linear regression!
+
+**Key Ideas**
+- You can protect against bias by starting out with a hypothesis, then collecting
+data in a way that follows randomization and random sampling principles
+- Any other method of analysis can be subject to bias resulting from data collection
+or the analytical process (this includes repeated running of models in data mining,
+data snooping in research and after-the-fact selection of interesting events).
 
 ## Sampling Distribution of a Statistic
+NEXT
 
 ### Central Limit Theorem
 
