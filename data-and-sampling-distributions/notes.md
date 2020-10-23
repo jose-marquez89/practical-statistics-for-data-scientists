@@ -165,6 +165,7 @@ that of the data itself
 more narrow
 
 Some distribution charts in R and Python:
+R:
 ```R
 library(ggplot2)
 # take a simple random sample
@@ -216,6 +217,15 @@ g.set_titles('{col_name}')
 ```
 
 ### Central Limit Theorem
+The central limit theorem basically says that the means from many samples
+will tend towards a "bell" curve even if the population from which the samples
+are acquired isn't distributed normally, as long as the sample is big enough
+and the data is fairly normal. This is what allows us to be able to use
+formulas for inference.
+
+- underpins hypothesis tests and confidence intervals
+- formal hypothesis testing doesn't have a huge role in data science
+- you can always bootstrap
 
 ### Standard Error
 
