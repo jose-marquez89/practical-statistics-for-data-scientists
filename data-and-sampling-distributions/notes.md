@@ -254,8 +254,65 @@ vary from sample to sample
 on the central limit theorem
 - standard error summarizes the variability of a sample statistic
 
-
 ## The Bootstrap
+
+**Key Terms**
+- **Boostrap sample**: A sample taken with replacement from an observed dataset.
+- **Resampling**: The process of taking repeated samples from observed data, includes
+bootstrap and permutation procedures.
+
+Bootstrapping:
+> "...effectively [creates] an infinite population in which the probability
+of an element being drawn remains unchanged from draw to draw."
+
+The bootstrap algorithm:
+1. Take a sample from the data, record it, then replace it
+2. Repeat _n_ times
+3. Record the mean of the _n_ resampled values
+4. Repeat steps 1-3 _R_ times
+5. Use the _R_ results to:
+  - calculate the standard deviation
+  - produce a histogram or boxplot
+  - find a confidence interval
+
+Using the R `boot` package:
+```R
+library(boot)
+stat_fun <- function(x, idx) median(x[idx])
+boot_obj <- boot(loans_income, R=1000, statistic=stat_fun)
+```
+Output:
+```R
+Bootstrap Statistics :
+    original   bias    std. error
+t1*    62000 -70.5595    209.1515
+```
+
+Using `scikit-learn` in Python:
+```python3
+results = []
+for nrepeat in range(1000):
+    sample = resample(loans_income)
+    results.append(sample.median())
+results = pd.Series(results)
+print('Bootstrap Statistics:')
+print(f'original: {loans_income.median()}')
+print(f'bias: {results.mean() - loans_income.median()}')
+print(f'std. error: {results.std()}')
+```
+
+You can do multivariate bootstrapping. _Bagging_ (or "bootstrap
+  aggregating") is running multiple decision trees on bootstrap
+samples and then averaging the results.
+
+_Warning_: bootstrapping doesn't make up for a small sample, it
+just shows us how more samples would behave when drawn from a population resembling the sample.
+
+**Key Ideas**
+- boostrapping helps you assess the variability of a sample statistic
+- you can often apply bootstrap sampling without looking too deeply into mathematical approximations of sampling distributions
+- also good estimation of sampling distributions where there may be no well developed approximations
+- bagging outperforms single model approaches in predictive modeling
 
 ### Resampling versus Bootstrapping
 
