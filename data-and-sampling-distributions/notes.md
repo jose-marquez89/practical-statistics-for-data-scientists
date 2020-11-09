@@ -305,6 +305,8 @@ You can do multivariate bootstrapping. _Bagging_ (or "bootstrap
   aggregating") is running multiple decision trees on bootstrap
 samples and then averaging the results.
 
+### Resampling versus Bootstrapping
+
 _Warning_: bootstrapping doesn't make up for a small sample, it
 just shows us how more samples would behave when drawn from a population resembling the sample.
 
@@ -314,7 +316,6 @@ just shows us how more samples would behave when drawn from a population resembl
 - also good estimation of sampling distributions where there may be no well developed approximations
 - bagging outperforms single model approaches in predictive modeling
 
-### Resampling versus Bootstrapping
 
 ## Confidence Intervals
 
