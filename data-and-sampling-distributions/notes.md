@@ -316,8 +316,38 @@ just shows us how more samples would behave when drawn from a population resembl
 - also good estimation of sampling distributions where there may be no well developed approximations
 - bagging outperforms single model approaches in predictive modeling
 
-
 ## Confidence Intervals
+Confidence intervals are yet another way to understand the potential error in a sample estimate
+
+**Key Terms**
+- **Confidence level**: The percentage of confidence intervals constructed in the same way and from the same population, expected to contain the statistic of interesting
+- **Interval Endpoints**: the upper and lower confidence bounds
+- **Point estimate**: a single number presented as an estimate
+
+It's better to present your estimates as a range, confidence intervals help you achieve this.
+
+**One way to describe CI's**:
+> the interval that encloses 90% (in this case) of the bootstrap
+sampling distribution of a sample statistic...an x% confidence interval around a sample estimate should contain similar sample estimates x% of the time, on average...
+
+**Algorithm for a bootstrapped CI**:
+1. Draw a random sample of size _n_ with replacement from the data
+2. Record the statistic of interest for the resample
+3. Repeat steps 1 & 2 (R) times
+4. For an x% CI, trim [(100-x)/2]% of the (R) resample results from each end of the distribution
+5. The trim points are the endpoints of a x% boostrap CI
+
+_Note_: A bootstrap CI is not really telling you the probability that a
+sample statistic lies within a certain value, although it gets interpreted that way
+
+As a data scientist, you aren't going after writing a paper or comparable goals;
+instead, you're using it to learn about the potential error in an estimate, and to
+get a better idea of whether a larger sample is needed
+
+**Key Ideas**
+- CI's help you present estimates as an interval range
+- the more data you have, the less variable a sample estimate will be
+- you can make a CI narrower if you can tolerate
 
 ## Normal Distribution
 
