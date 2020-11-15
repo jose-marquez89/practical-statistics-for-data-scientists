@@ -369,6 +369,7 @@ To get the z-score, subtract the mean and divide by the standard deviation
 - Raw data is typically not normally distributed, but errors often are, just like
 averages and totals in large samples
 - to convert data to z-scores subtract the mean of the data and divide by the standard deviation, then you can compare it to a normal distribution
+
 ### Standard Normal and QQ-Plots
 
 ## Long-Tailed Distribution
