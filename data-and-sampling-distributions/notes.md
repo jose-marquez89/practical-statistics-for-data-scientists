@@ -351,6 +351,24 @@ get a better idea of whether a larger sample is needed
 
 ## Normal Distribution
 
+**Key Terms**
+- **Error**: the difference between a data point and a predicted or average value
+- **Standardize**: subtract the mean and divide by the standard deviation
+- **z-score**: the result of standardizing an individual data point
+- **Standard normal**: a normal distribution with a mean of 0 and a standard deviation of 1
+- **QQ-Plot**: a plot to visualize how close a sample distribution is to a specified distribution
+
+_Warning_: assuming that data is normally distributed should be a last resort when bootstrap distributions or empirical probability distributions are not available
+
+Also referred to as _Gaussian_ distribution after Carl Friedrich Gauss
+
+To get the z-score, subtract the mean and divide by the standard deviation
+
+**Key Ideas**
+- The normal distribution helped develop our mathematical understanding of uncertainty
+- Raw data is typically not normally distributed, but errors often are, just like
+averages and totals in large samples
+- to convert data to z-scores subtract the mean of the data and divide by the standard deviation, then you can compare it to a normal distribution
 ### Standard Normal and QQ-Plots
 
 ## Long-Tailed Distribution
