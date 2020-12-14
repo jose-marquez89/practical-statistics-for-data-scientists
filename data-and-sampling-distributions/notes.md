@@ -371,6 +371,41 @@ averages and totals in large samples
 - to convert data to z-scores subtract the mean of the data and divide by the standard deviation, then you can compare it to a normal distribution
 
 ### Standard Normal and QQ-Plots
+_Standard Normal_: a distribution where the units on the x-axis are expressed in terms of standard deviations
+from the mean
+
+To compare data to a standard normal distribution:
+- subtract the mean
+- divide by the standard deviation
+
+Also called _normalization_ and _standardization_
+- produces a z-score
+- normal distribution is sometimes called the _z-distribution_
+
+**QQ plot**
+- used to specify how close a sample is to a particular distribution
+- y-axis is the z-score
+- x-axis is the quantile of a normal distribution for a value's rank
+- if points fall close to diagonal line, sample distribution can be considered close to normal
+
+R plot:
+```R
+norm_samp <- rnorm(100)
+qqnorm(norm_samp)
+abline(a=0, b=1, col='grey')
+```
+Python:
+```python3
+fig, ax = plt.subplots(figsize=(4, 4))
+norm_sample = stats.norm.rvs(size=100)
+stats.probplot(norm_sample, plot=ax)
+```
+**Warning**: standardizing or normalizing (getting z-score) just puts the data on the same scale as the standard normal distribution
+
+**Key Ideas**
+- the normal distribution is important in statistics because it allows you to approximate uncertaintly and variablility using math
+- errors, averages and totals in large samples are often normally distributed
+- to get a z-score: subtract the mean, and divide by the standard deviation, this is a proportion of the standard deviation based on the distance from the mean
 
 ## Long-Tailed Distribution
 
