@@ -408,7 +408,7 @@ stats.probplot(norm_sample, plot=ax)
 - to get a z-score: subtract the mean, and divide by the standard deviation, this is a proportion of the standard deviation based on the distance from the mean
 
 ## Long-Tailed Distribution
-
+Continued in Jupyter Notebook
 ## Student's t-Distribution
 
 ## Binomial Distribution
